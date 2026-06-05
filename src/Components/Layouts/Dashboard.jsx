@@ -2,20 +2,20 @@ import NavBar from "./Navbar"
 import SideBar from "./Sidebar"
 import DataGrid from "../Grid/DataGrid"
 
-function DashBoard(){
-    return(
-        <div className="flex items-start w-full md:min-h-screen ">
-            <div className=" hidden bg-lime-cream md:flex w-fit shrink-0">
-            <SideBar/>
-        </div>
-        <div className="flex min-w-0 w-full flex-col">
-            <NavBar/>
-            <div className="p-10" >
-                <DataGrid/>
-             
+function DashBoard() {
+    return (
+        <div className="flex w-full items-start md:min-h-screen ">
+            <div className="hidden w-fit shrink-0 md:flex">
+                <SideBar />
             </div>
-        </div>
-       
+            <div className="flex w-full min-w-0 flex-col">
+                <NavBar />
+                <div className="p-10" >
+                    <DataGrid />
+
+                </div>
+            </div>
+
         </div>
     )
 }

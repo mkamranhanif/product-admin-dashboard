@@ -1,9 +1,9 @@
-import axios from'axios'
-import {create} from 'zustand'
+import axios from 'axios'
+import { create } from 'zustand'
 
-const useStore = create((set)=>({
+const useStore = create((set) => ({
   data: [],
-  isLoading:(true),
+  isLoading: (true),
   error: (null),
   searchQuery: "",
   selectedCategory: "All",
@@ -13,33 +13,34 @@ const useStore = create((set)=>({
   selectedFilter: "",
 
 
-  async fetchData(){
-    set({isLoading:(true), error:(null)})
-    try{
-      const res= await axios.get("https://fakestoreapi.com/products")
-      set({data: res.data})
+  async fetchData() {
+    set({ isLoading: (true), error: (null) })
+    try {
+      const res = await axios.get("https://fakestoreapi.com/products")
+      set({ data: res.data })
     }
-    catch(err){
-      set({error: err.message})
+    catch (err) {
+      set({ error: err.message })
     }
-    finally{
-      set({isLoading:(false)})
+    finally {
+      set({ isLoading: (false) })
     }
   },
-  
-  setSearchQuery(query){
-    set({searchQuery: query, pageNumber: 1})
+
+  setSearchQuery(query) {
+    set({ searchQuery: query, pageNumber: 1 })
   },
-  setSelectedFilter(value){ 
-    set({selectedFilter: value  })
+  setSelectedFilter(value) {
+    set({ selectedFilter: value })
   },
-  setCategory(categ){
-    set({selectedCategory: categ, pageNumber: 1})
+  setCategory(categ) {
+    set({ selectedCategory: categ, pageNumber: 1 })
   },
-  setPage(curr){
-    set({pageNumber: curr})
+  setPage(curr) {
+    set({ pageNumber: curr })
   },
-  setSortConfig(key){
+  setSortConfig(key) {
+    console.log(key)
     set((state) => {
       const sameKey = state.sortConfig.key === key
       const nextDirection = sameKey && state.sortConfig.direction === "asc" ? "desc" : "asc"

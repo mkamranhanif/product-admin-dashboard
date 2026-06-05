@@ -1,48 +1,62 @@
 import { useState } from "react"
-import heroImg from "../../assets/hero.png"
+import bellIcon from "../../assets/ringing.png"
 import userI from "../../assets/user.png"
 import hamburgerIcon from "../../assets/hamburger.png"
 import SideBar from "./Sidebar"
-function NavBar(){
 
-    const [isOpen, setIsOpen]= useState(false)
+function NavBar() {
 
-    const handleIsOpen = (v)=>{
-        setIsOpen(!v)
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleIsOpen = () => {
+        setIsOpen(!isOpen)
     }
-       
 
-    
-
-    return(
-
-        
-            
-        <nav className="relative flex items-start justify-between gap-4 p-5 w-full max-w-full bg-neutral-50">
-            <div className="min-w-0 flex-1">
-                <div className="mb-7 md:hidden flex items-center gap-3">
-                    <div className="relative">
-                        <button onClick={()=>handleIsOpen(isOpen)}><img className="w-6 h-6" src={hamburgerIcon} alt="" /></button>
+    return (
+        <div className="flex w-full flex-col bg-[#f7f9fb]">
+            {/* Top Navigation Bar */}
+            <nav className="flex items-center justify-between border-b border-[#eceef0] bg-white px-4 py-3">
+                {/* Left side: Hamburger and Logo */}
+                <div className="flex items-center gap-3">
+                    <div className="relative flex items-center md:hidden">
+                        <button onClick={handleIsOpen} className="flex items-center justify-center rounded p-1 hover:bg-gray-100">
+                            <img className="h-6 w-6" src={hamburgerIcon} alt="Menu" />
+                        </button>
                         {isOpen && (
-                            <div className="absolute left-0 top-full z-20 mt-3 w-64 max-w-[80vw] overflow-hidden rounded-md bg-lime-cream shadow">
-                                <SideBar/>
+                            <div className="absolute top-full left-0 z-20 mt-3 w-64 max-w-[80vw] overflow-hidden rounded-md border border-[#e0e3e5] bg-white shadow-md">
+                                <SideBar />
                             </div>
                         )}
                     </div>
-                    <p className="font-bold">Data Flow</p>
+                    {/* DataFlow text */}
+                    <span className="text-[24px] font-semibold tracking-[-0.01em] text-[#191c1e]" style={{ fontFamily: 'Inter, sans-serif' }}>DataFlow</span>
                 </div>
-                <p className="font-extrabold">Products/inventory</p>
-                <p className="text-gray-600 text-xs ">manage your catalog, stock levels and pricing</p>
-            </div>
 
-            <div className="flex shrink-0 gap-3.5 md:items-center">
-                <img className="w-5 h-5" src={heroImg} alt="User" />
-                <button className="overflow-hidden bg-amber-400 rounded-2xl w-6 h-6"><img className="w-6 h-6" src={userI} alt="user" /></button>
-            </div>
+                {/* Right side: Bell and User */}
+                <div className="flex items-center gap-4">
+                    {/* Notification Bell */}
+                    <button className="relative flex items-center justify-center rounded-full p-1 hover:bg-gray-100">
+                        <img className="h-5 w-5" src={bellIcon} alt="Notifications" />
+                        {/* Red Dot Indicator */}
+                        <span className="absolute top-1 right-1 h-2 w-2 rounded-full border-[1.5px] border-white bg-[#ba1a1a]"></span>
+                    </button>
+                    {/* User Avatar */}
+                    <button className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-full border border-[#c3c6d7] bg-amber-400">
+                        <img className="h-full w-full object-cover" src={userI} alt="user" />
+                    </button>
+                </div>
+            </nav>
 
-        </nav>
-        
-        
+            {/* Page Header (Products/Inventory) */}
+            <div className="px-4 pt-6 pb-4 md:px-6">
+                <h1 className="mb-1 text-[28px] leading-[36px] font-semibold tracking-[-0.01em] text-[#191c1e]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Products/Inventory
+                </h1>
+                <p className="text-[14px] leading-[20px] text-[#434655]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Manage your catalog, stock levels, and pricing.
+                </p>
+            </div>
+        </div>
     )
 }
 export default NavBar
