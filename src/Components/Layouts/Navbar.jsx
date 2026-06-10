@@ -41,7 +41,7 @@ function NavBar() {
                         <span className="absolute top-1 right-1 h-2 w-2 rounded-full border-[1.5px] border-white bg-[#ba1a1a]"></span>
                     </button>
                     {/* User Avatar */}
-                    <button className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-full border border-[#c3c6d7] bg-amber-400">
+                    <button className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-full border border-[#c3c6d7] bg-[#004ac6]">
                         <img className="h-full w-full object-cover" src={userI} alt="user" />
                     </button>
                 </div>
